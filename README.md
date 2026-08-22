@@ -23,16 +23,15 @@ shape and data types, and found three columns that never changed
 for any employee (EmployeeCount, Over18, StandardHours) — dropped
 those since they had no analytical value. No missing values or
 duplicates otherwise, so cleaning was quick. That notebook is
-[`HR_Attrition_EDA.ipynb`](./HR_Attrition_EDA.ipynb).
+[HR_Attrition_EDA.ipynb](./notebook/HR_Attrition_EDA.ipynb).
 
 Did an initial pass in Python using groupby, value_counts, and
 crosstab to get a first read on the data before moving to SQL. Then
 loaded the cleaned data into SQL Server — table setup is in
-[`schema.sql`](./schema.sql) — and wrote the deeper analysis
+[schema.sql](./sql/schema.sql) — and wrote the deeper analysis
 queries — aggregations, CASE WHEN for conditional counts, a window
 function for the overall attrition percentage. Queries are in
-[`hr_analysis_queries.sql`](./hr_analysis_queries.sql).
-
+[hr_analysis_queries.sql](./sql/hr_analysis_queries.sql).
 Doing a first pass in Python and then rebuilding the main numbers
 in SQL worked out as a decent double-check on my own work — a
 couple of numbers didn't match at first until I found a rounding
@@ -50,7 +49,7 @@ Screenshots are in `/screenshots`.
 
 ## What I found
 
-Full notes in [`hr_business_insights.md`](./hr_business_insights.md).
+Full notes in [business_insights.md](./business_insights.md).
 Main things:
 
 - Overall attrition is 16.12%
@@ -87,10 +86,10 @@ a snapshot rather than trends. A few things worth keeping in mind:
 ## How to run this
 
 1. Download the dataset from Kaggle
-2. Run [`HR_Attrition_EDA.ipynb`](./HR_Attrition_EDA.ipynb) to clean
+2. Run [HR_Attrition_EDA.ipynb](./notebook/HR_Attrition_EDA.ipynb) to clean
    the data and export `HR_Attrition_Cleaned.csv`
-3. Run [`schema.sql`](./schema.sql) to create and load the
+3. Run [schema.sql](./sql/schema.sql) to create and load the
    `employees` table in SQL Server
-4. Run the queries in `hr_analysis_queries.sql` if you want to
+4. Run the queries in `sql/hr_analysis_queries.sql` if you want to
    reproduce the SQL-side analysis
 5. Open the Power BI file and connect it to your SQL Server instance
